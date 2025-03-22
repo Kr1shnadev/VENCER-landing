@@ -40,15 +40,23 @@ body {
     flex-direction: column;
 }
 
+.main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
 .title, .subtitle, .tagline {
     font-family: 'Cinzel Decorative', cursive;
-    color: #000000;
-    -webkit-text-stroke: 1px black;
-    text-shadow: 
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 2;
 }
 
 .title {
@@ -95,6 +103,7 @@ body {
     gap: 50px;
     max-width: 1200px;
     margin: 0 auto;
+    margin-top: 40px;
 }
 
 .college-image {
@@ -188,4 +197,194 @@ body {
 
 .footer a:hover {
     color: #e7a958;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    /* Navbar adjustments - consistent across all pages */
+    .navbar {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 12px 20px;
+        background: rgba(255, 255, 255, 0.95);
+        display: flex;
+        gap: 15px;
+        border-radius: 8px;
+        width: auto;
+    }
+
+    .navbar a {
+        font-size: 14px;
+    }
+
+    /* Main title adjustments */
+    .title {
+        font-size: 5.5rem;
+        margin-bottom: 15px;
+        line-height: 1.1;
+    }
+
+    .tagline {
+        font-size: 1.5rem;
+        letter-spacing: 0.1em;
+        margin: 10px 0;
+    }
+
+    .subtitle {
+        font-size: 2.8rem;
+        margin-top: 15px;
+    }
+
+    /* Countdown adjustments */
+    .countdown-section {
+        padding: 20px 10px;
+        margin-top: 20px;
+    }
+
+    .countdown-title {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        padding: 0 15px;
+        line-height: 1.3;
+    }
+
+    .countdown {
+        gap: 12px;
+        padding: 0 10px;
+    }
+
+    .countdown-item {
+        min-width: 75px;
+        padding: 12px 8px;
+    }
+
+    .countdown-number {
+        font-size: 2rem;
+        margin-bottom: 5px;
+    }
+
+    .countdown-label {
+        font-size: 0.8rem;
+    }
+
+    /* Restore and adjust floating images for mobile */
+    .floating-images {
+        display: block;
+        overflow: hidden;
+        margin-top: 30px;
+    }
+
+    .image-row img {
+        width: 200px;
+        height: auto;
+    }
+
+    .float-left, .float-right {
+        animation-duration: 45s;
+    }
+
+    .contact-section {
+        flex-direction: column;
+        padding: 100px 15px 40px 15px;
+        gap: 30px;
+    }
+
+    .college-image {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .college-info {
+        width: 100%;
+        padding: 0 15px;
+        text-align: center;
+    }
+
+    .college-info h2 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+        margin: 15px 0;
+    }
+
+    .justified-text {
+        font-size: 16px !important;
+        line-height: 1.6;
+        margin: 15px 0;
+        text-align: justify;
+    }
+
+    .website-button, .events-button {
+        width: 80%;
+        max-width: 200px;
+        margin: 20px auto;
+        padding: 12px 20px;
+        display: block;
+    }
+}
+
+/* Small phone adjustments */
+@media screen and (max-width: 360px) {
+    .title {
+        font-size: 4.2rem;
+    }
+
+    .tagline {
+        font-size: 1.3rem;
+    }
+
+    .subtitle {
+        font-size: 2.3rem;
+    }
+
+    .countdown-title {
+        font-size: 1.5rem;
+    }
+
+    .countdown-item {
+        min-width: 70px;
+        padding: 10px 5px;
+    }
+
+    .image-row img {
+        width: 150px;
+    }
+}
+
+/* Tablet adjustments */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .title {
+        font-size: 7rem;
+    }
+
+    .tagline {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 3.5rem;
+    }
+
+    .countdown-title {
+        font-size: 2.2rem;
+    }
+
+    .countdown-item {
+        min-width: 100px;
+    }
+
+    .image-row img {
+        width: 250px;
+    }
+
+    .contact-section {
+        padding: 120px 40px 60px 40px;
+        gap: 40px;
+    }
+
+    .college-info h2 {
+        font-size: 2rem;
+    }
 }

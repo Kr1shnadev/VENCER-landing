@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event 2K25</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#333333">
+    <title>VENCER 2025</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -37,7 +38,7 @@
         }
 
         .tagline {
-            font-size: 1.5rem;
+            font-size: 2rem;
             animation: bottomUp 1.0s ease-out forwards;
             animation-delay: 1s;
         }
@@ -157,6 +158,83 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(33.333%); }
         }
+
+        .countdown-section {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: -20px;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out 2s forwards;
+        }
+
+        .countdown-title {
+            font-family: 'Cinzel Decorative', cursive;
+            color: #ffffff;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .countdown-item {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid #d4af37;
+            border-radius: 15px;
+            padding: 20px;
+            min-width: 120px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .countdown-number {
+            font-size: 3rem;
+            color: #d4af37;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'Cinzel Decorative', cursive;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .countdown-label {
+            color: #f1cf52;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .countdown-item:hover {
+            animation: pulse 1s infinite;
+            border-color:#fff;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -169,8 +247,30 @@
 
     <div class="main">
         <div class="title">VENCER</div>
-        <div class="tagline">SPIRITUAL INGINERILOR</div>
+        <div class="tagline">SPIRITUL INGINERILOR</div>
         <div class="subtitle">2025</div>
+        
+        <div class="countdown-section">
+            <h2 class="countdown-title">Time Until VENCER 2025</h2>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div id="days" class="countdown-number">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div id="hours" class="countdown-number">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div id="minutes" class="countdown-number">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div id="seconds" class="countdown-number">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="content-section">
@@ -249,5 +349,36 @@
             <p>Contact: <a href="mailto:contact@vencer.com">contact@vencer.com</a></p>
         </div>
     </footer>
+    <script>
+        function updateCountdown() {
+            const eventDate = new Date('2025-04-08T09:00:00+05:30').getTime();
+            
+            function update() {
+                const now = new Date().getTime();
+                const distance = eventDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.querySelector('.countdown-title').textContent = 'VENCER 2025 IS HERE!';
+                    document.querySelectorAll('.countdown-number').forEach(el => el.textContent = '00');
+                }
+            }
+
+            update();
+            const timer = setInterval(update, 1000);
+        }
+
+        updateCountdown();
+    </script>
 </body>
 </html>
