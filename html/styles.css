@@ -38,6 +38,7 @@ body {
     background: url('https://source.unsplash.com/1600x900/?tajmahal') no-repeat center center/cover;
     position: relative;
     flex-direction: column;
+    padding-bottom: 120px;
 }
 
 .main::before {
@@ -199,6 +200,17 @@ body {
     color: #e7a958;
 }
 
+.countdown {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.countdown-item {
+    flex: 1;
+    text-align: center;
+}
+
 /* Responsive styles */
 @media screen and (max-width: 768px) {
     /* Navbar adjustments - consistent across all pages */
@@ -221,7 +233,7 @@ body {
 
     /* Main title adjustments */
     .title {
-        font-size: 5.5rem;
+        font-size: 5rem;
         margin-bottom: 15px;
         line-height: 1.1;
     }
@@ -323,6 +335,10 @@ body {
         padding: 12px 20px;
         display: block;
     }
+
+    .main {
+        padding-top: 300px; /* Increased padding significantly for better fit below navbar */
+    }
 }
 
 /* Small phone adjustments */
@@ -386,5 +402,20 @@ body {
 
     .college-info h2 {
         font-size: 2rem;
+    }
+}
+
+/* Desktop adjustments */
+@media (min-width: 769px) {
+    .contact-section {
+        align-items: center; /* Align items in the center for desktop view */
+    }
+
+    .college-image {
+        margin-top: 0; /* Remove any top margin to align with title */
+    }
+
+    .college-info {
+        margin-top: 0; /* Remove any top margin to align with image */
     }
 }
