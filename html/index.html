@@ -7,260 +7,38 @@
     <title>VENCER 2025</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-image: url('images/background.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .main {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .title, .subtitle, .tagline {
-            opacity: 0;
-            transform: translateY(50px);
-            font-family: 'Cinzel Decorative', cursive;
-        }
-
-        .title {
-            font-size: 9rem;
-            animation: bottomUp 1.0s ease-out forwards;
-        }
-
-        .tagline {
-            font-size: 2rem;
-            animation: bottomUp 1.0s ease-out forwards;
-            animation-delay: 1s;
-        }
-
-        .subtitle {
-            font-size: 4rem;
-            animation: bottomUp 1.0s ease-out forwards;
-            animation-delay: 2s;
-        }
-
-        .logo-container {
-            opacity: 0;
-            transform: translateY(50px);
-            animation: bottomUp 1.0s ease-out forwards;
-        }
-
-        .logo {
-            max-width: 800px;
-            height: auto;
-        }
-
-        body > .navbar {
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
-            animation-delay: 2.0s;
-        }
-
-        .content-section {
-            position: relative;
-            min-height: 100vh;
-            overflow: hidden;
-            background-color: rgba(255, 247, 178, 0.6);
-            backdrop-filter: blur(3px);
-        }
-
-        .floating-images {
-            padding: 200px 10px;
-            position: relative;
-            z-index: 2;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .image-row {
-            display: flex;
-            justify-content: flex-start;
-            gap: 35px;
-            margin: 60px 0;
-            position: relative;
-            width: 300%;
-            left: -100%;
-            animation: scroll 30s linear infinite;
-        }
-
-        .image-row:nth-child(2) {
-            animation: scrollReverse 30s linear infinite;
-        }
-
-        .float-left, .float-right {
-            width: 325px;
-            height: 225px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .footer {
-            background-color: #333;
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer p {
-            margin: 10px 0;
-            color: #ccc;
-        }
-
-        .footer a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        @keyframes bottomUp {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-33.333%); }
-        }
-
-        @keyframes scrollReverse {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(33.333%); }
-        }
-
-        .countdown-section {
-            text-align: center;
-            padding: 30px 0;
-            margin-top: -20px;
-            position: relative;
-            z-index: 2;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease-out 2s forwards;
-        }
-
-        .countdown-title {
-            font-family: 'Cinzel Decorative', cursive;
-            color: #ffffff;
-            font-size: 2rem;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 0 auto;
-            max-width: 800px;
-        }
-
-        .countdown-item {
-            background: rgba(0, 0, 0, 0.6);
-            border: 2px solid #d4af37;
-            border-radius: 15px;
-            padding: 20px;
-            min-width: 120px;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .countdown-number {
-            font-size: 3rem;
-            color: #d4af37;
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-family: 'Cinzel Decorative', cursive;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .countdown-label {
-            color: #f1cf52;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .countdown-item:hover {
-            animation: pulse 1s infinite;
-            border-color:#fff;
-        }
-
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .countdown {
-                flex-direction: column;
-            }
-            .title {
-                font-size: 5rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="navbar">
         <a href="index.html">HOME</a>
-        <a href="events.html">EVENTS</a>
+        <a href="#" onclick="document.getElementById('departments-popup').style.display='block';">EVENTS</a>
         <a href="about.html">ABOUT US</a>
         <a href="contact.html">CONTACT</a>
     </div>
 
+    <div id="departments-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.8); z-index:1000;">
+        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:20px; border-radius:10px;">
+            <h2>Select a Department</h2>
+            <div style="display:flex; flex-wrap:wrap; justify-content:center;">
+                <a href="department1.html" style="margin:10px; padding:10px; background:#f1cf52; border-radius:5px;">Department 1</a>
+                <a href="department2.html" style="margin:10px; padding:10px; background:#f1cf52; border-radius:5px;">Department 2</a>
+                <a href="department3.html" style="margin:10px; padding:10px; background:#f1cf52; border-radius:5px;">Department 3</a>
+                <a href="department4.html" style="margin:10px; padding:10px; background:#f1cf52; border-radius:5px;">Department 4</a>
+                <a href="department5.html" style="margin:10px; padding:10px; background:#f1cf52; border-radius:5px;">Department 5</a>
+                <a href="department6.html" style="margin:10px; padding:10px; background:#f1cf52; border-radius:5px;">Department 6</a>
+                <a href="department7.html" style="margin:10px; padding:10px; background:#f1cf52; border-radius:5px;">Department 7</a>
+            </div>
+            <button onclick="document.getElementById('departments-popup').style.display='none';">Close</button>
+        </div>
+    </div>
+    
     <div class="main">
-        <div class="title">VENCER</div>
-        <div class="tagline">SPIRITUL INGINERILOR</div>
-        <div class="subtitle">2025</div>
+        <div class="title animate">VENCER</div>
+        <div class="tagline animate">SPIRITUL INGINERILOR</div>
+        <div class="subtitle animate">2025</div>
         
         <div class="countdown-section">
-            <h2 class="countdown-title">Time Until VENCER 2025</h2>
+            <h2 class="countdown-title">Time Until VENCER</h2>
             <div class="countdown">
                 <div class="countdown-item">
                     <div id="days" class="countdown-number">00</div>
@@ -282,75 +60,70 @@
         </div>
     </div>
     
-    <div class="content-section">
-        <div class="floating-images">
-            <div class="image-row">
-                <!-- First set -->
-                <img class="float-left" src="images/Firefly.png" alt="Tech">
-                <img class="float-left" src="images/Firefly.png" alt="Innovation">
-                <img class="float-left" src="images/Firefly.png" alt="Firefly">
-                <img class="float-left" src="images/Firefly.png" alt="Tech">
-                <img class="float-left" src="images/Firefly.png" alt="Innovation">
-                <img class="float-left" src="images/Firefly.png" alt="Firefly">
-                <img class="float-left" src="images/Firefly.png" alt="Tech">
-                <img class="float-left" src="images/Firefly.png" alt="Innovation">
-                <img class="float-left" src="images/Firefly.png" alt="Firefly">
-                <!-- Second set -->
-                <img class="float-left" src="images/Firefly.png" alt="Tech">
-                <img class="float-left" src="images/Firefly.png" alt="Innovation">
-                <img class="float-left" src="images/Firefly.png" alt="Firefly">
-                <img class="float-left" src="images/Firefly.png" alt="Tech">
-                <img class="float-left" src="images/Firefly.png" alt="Innovation">
-                <img class="float-left" src="images/Firefly.png" alt="Firefly">
-                <img class="float-left" src="images/Firefly.png" alt="Tech">
-                <img class="float-left" src="images/Firefly.png" alt="Innovation">
-                <img class="float-left" src="images/Firefly.png" alt="Firefly">
-                <!-- Third set -->
-                <img class="float-left" src="images/Firefly.png" alt="Tech">
-                <img class="float-left" src="images/Firefly.png" alt="Innovation">
-                <img class="float-left" src="images/Firefly.png" alt="Firefly">
-                <img class="float-left" src="images/Firefly.png" alt="Tech">
-                <img class="float-left" src="images/Firefly.png" alt="Innovation">
-                <img class="float-left" src="images/Firefly.png" alt="Firefly">
-                <img class="float-left" src="images/Firefly.png" alt="Tech">
-                <img class="float-left" src="images/Firefly.png" alt="Innovation">
-                <img class="float-left" src="images/Firefly.png" alt="Firefly">
-            </div>
-            <div class="image-row">
-                <!-- First set -->
-                <img class="float-right" src="images/Firefly.png" alt="Future">
-                <img class="float-right" src="images/Firefly.png" alt="Digital">
-                <img class="float-right" src="images/Firefly.png" alt="Engineering">
-                <img class="float-right" src="images/Firefly.png" alt="Future">
-                <img class="float-right" src="images/Firefly.png" alt="Digital">
-                <img class="float-right" src="images/Firefly.png" alt="Engineering">
-                <img class="float-right" src="images/Firefly.png" alt="Future">
-                <img class="float-right" src="images/Firefly.png" alt="Digital">
-                <img class="float-right" src="images/Firefly.png" alt="Engineering">
-                <!-- Second set -->
-                <img class="float-right" src="images/Firefly.png" alt="Future">
-                <img class="float-right" src="images/Firefly.png" alt="Digital">
-                <img class="float-right" src="images/Firefly.png" alt="Engineering">
-                <img class="float-right" src="images/Firefly.png" alt="Future">
-                <img class="float-right" src="images/Firefly.png" alt="Digital">
-                <img class="float-right" src="images/Firefly.png" alt="Engineering">
-                <img class="float-right" src="images/Firefly.png" alt="Future">
-                <img class="float-right" src="images/Firefly.png" alt="Digital">
-                <img class="float-right" src="images/Firefly.png" alt="Engineering">
-                <!-- Third set -->
-                <img class="float-right" src="images/Firefly.png" alt="Future">
-                <img class="float-right" src="images/Firefly.png" alt="Digital">
-                <img class="float-right" src="images/Firefly.png" alt="Engineering">
-                <img class="float-right" src="images/Firefly.png" alt="Future">
-                <img class="float-right" src="images/Firefly.png" alt="Digital">
-                <img class="float-right" src="images/Firefly.png" alt="Engineering">
-                <img class="float-right" src="images/Firefly.png" alt="Future">
-                <img class="float-right" src="images/Firefly.png" alt="Digital">
-                <img class="float-right" src="images/Firefly.png" alt="Engineering">
+    <section class="intro-section">
+        <h2 style="font-family: 'Cinzel Decorative', cursive; text-align: center;">
+            &quot;<span style="color: #f1cf52;">VENCER</span>, a vibrant fest of delight,<br>
+            where <span style="color: #f1cf52;">tech</span> meets <span style="color: #f1cf52;">culture</span>, day and night.<br>
+            At <span style="color: #f1cf52;">Angadi Institute</span>, talents soar,<br>
+            with <span style="color: #f1cf52;">events</span> galore, come explore!<br>
+            From <span style="color: #f1cf52;">innovations</span> bright to cultural sight,<br>
+            <span style="color: #f1cf52;">VENCER</span> ignites <span style="color: #f1cf52;">passions</span> in its flight.&quot;
+        </h2>
+    </section>
+    
+    <div class="timeline-section" style="margin-top: 50px; margin-bottom: 0;">
+        <div class="timeline-container">
+            <h2 class="timeline-title">Event Schedule</h2>
+            <div class="vertical-line"></div>
+            <div class="dot"></div>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <img src="../html/images/code-quest.jpg" alt="Mask of Logic" class="event-poster-img">
+                        <div class="timeline-time">10:30 AM</div>
+                        <div class="timeline-event">Mask of Logic</div>
+                        <button class="register-button" onclick="window.location.href='https://dummy-link.com';">Register</button>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <img src="../html/images/poster.jpg" alt="IoT Workshop" class="event-poster-img">
+                        <div class="timeline-time">2:30 PM</div>
+                        <div class="timeline-event">IoT Workshop</div>
+                        <button class="register-button" onclick="window.location.href='https://dummy-link.com';">Register</button>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <img src="../html/images/Firefly.png" alt="Poetry Slam" class="event-poster-img">
+                        <div class="timeline-time">6:00 PM</div>
+                        <div class="timeline-event">Poetry Slam</div>
+                        <button class="register-button" onclick="window.location.href='https://dummy-link.com';">Register</button>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <img src="../html/images/Firefly.png" alt="Laser Show" class="event-poster-img">
+                        <div class="timeline-time">9:30 PM</div>
+                        <div class="timeline-event">Laser Show</div>
+                        <button class="register-button" onclick="window.location.href='https://dummy-link.com';">Register</button>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <img src="../html/images/Firefly.png" alt="Silent Disco" class="event-poster-img">
+                        <div class="timeline-time">1:00 AM</div>
+                        <div class="timeline-event">Silent Disco</div>
+                        <button class="register-button" onclick="window.location.href='https://dummy-link.com';">Register</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
+    
+    <div class="content-section">
+    </div>
+    
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2025 VENCER. All rights reserved.</p>
@@ -388,6 +161,24 @@
         }
 
         updateCountdown();
+    </script>
+    <script>
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing once it's visible
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the item is visible
+        });
+
+        timelineItems.forEach(item => {
+            observer.observe(item);
+        });
     </script>
 </body>
 </html>

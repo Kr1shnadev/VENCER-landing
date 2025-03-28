@@ -1,11 +1,24 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding and borders are included in the element's total width and height */
+}
+
+/* Reset and base styles */
 body {
     margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #f5e1c5, #d2a679);
-    text-align: center;
+    background-image: url('images/background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
     overflow-x: hidden;
 }
 
+/* Navbar styles */
 .navbar {
     position: fixed;
     top: 20px;
@@ -30,71 +43,266 @@ body {
     color: #432d1b;
 }
 
+/* Main section styles */
 .main {
     height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url('https://source.unsplash.com/1600x900/?tajmahal') no-repeat center center/cover;
-    position: relative;
     flex-direction: column;
-    padding-bottom: 120px;
-}
-
-.main::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .title, .subtitle, .tagline {
+    opacity: 0;
+    transform: translateY(50px);
     font-family: 'Cinzel Decorative', cursive;
     color: #ffffff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    position: relative;
     z-index: 2;
+}
+
+.title.animate {
+    animation: bottomUp 1.0s ease-out forwards;
+}
+
+.tagline.animate {
+    animation: bottomUp 1.0s ease-out forwards;
+    animation-delay: 1s;
+}
+
+.subtitle.animate {
+    animation: bottomUp 1.0s ease-out forwards;
+    animation-delay: 2s;
 }
 
 .title {
     font-size: 9rem;
-    font-weight: bold;
-    -webkit-text-stroke: 2px black;
 }
 
 .tagline {
     font-size: 2rem;
     letter-spacing: 0.2em;
-    margin-top: -1rem;
 }
 
 .subtitle {
     font-size: 4rem;
 }
 
-.scroll-section {
-    height: 100vh;
-    background: #f5e1c5;
+/* Countdown section styles */
+.countdown-section {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 20px; /* Add margin for spacing between 2025 and Time Until VENCER */
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out 2s forwards;
+}
+
+.countdown-title {
+    font-family: 'Cinzel Decorative', cursive;
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.countdown {
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    gap: 30px;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.countdown-item {
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #d4af37;
+    border-radius: 15px;
     padding: 20px;
+    min-width: 120px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.iconic-buildings img {
-    width: 100px;
-    height: auto;
-    margin: 10px;
+.countdown-number {
+    font-size: 3rem;
+    color: #d4af37;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Cinzel Decorative', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.countdown-label {
+    color: #f1cf52;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Timeline section styles */
+.timeline-section {
+    padding: 50px 0; /* Extend background to join with intro section */
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.timeline-container {
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1; 
+    transition: opacity 0.6s ease; 
+    background-color: rgba(255, 247, 178, 0.6); 
+    backdrop-filter: blur(3px);
+}
+
+.timeline-title {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+@keyframes testAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cleanFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-item {
+    margin-bottom: 20px;
+    width: 28%;
+    position: relative;
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 0.6s ease, transform 0.6s ease; 
+}
+
+.timeline-item.left {
+    text-align: left;
+    margin-right: 55%;
+    background-color: white;
+    text-align: center;
+}
+
+.timeline-item.right {
+    text-align: right;
+    margin-left: 55%;
+    background-color: white;
+    text-align: center;
+}
+
+.timeline-item.visible {
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+.timeline-content {
+    padding: 12px;
+    border: 1px solid #ddd;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    margin: 0 auto;
+    transition: transform 0.2s;
 }
 
-.justified-text {
-    text-align: justify;
+.timeline-content:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.event-poster-img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.vertical-line {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: calc(100% - 250px);
+    border-left: 2px solid #fab22d;
+}
+
+.dot {
+    position: absolute;
+    top: 145px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: #fbbe4e;
+    border-radius: 50%;
+}
+
+/* Intro section styles */
+.intro-section, .timeline-section {
+    margin: 0; /* Ensure no margins */
+    padding: 0; /* Ensure no paddings */
+}
+
+.intro-section {
+    background-color: rgba(255, 247, 178, 0.6);
+    padding: 50px 0; /* Extend background to join with timeline */
+    border-radius: 0;
+    margin-bottom: 0;
+    backdrop-filter: blur(3px);
+}
+
+/* Content section styles */
+.content-section {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: rgba(255, 247, 178, 0.6);
+    backdrop-filter: blur(3px);
+}
+
+.content {
+    text-align: center; /* Center all text in the content */
 }
 
 .contact-section {
@@ -172,250 +380,240 @@ body {
     background-color: #e7a958;
 }
 
+.justified-text {
+    text-align: justify;
+}
+
+.centred-text{
+    text-align: center;
+}
+
+/* Register button styles */
+.register-button {
+    background-color: #fbbe4e;
+    color: #333;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.register-button:hover {
+    background-color: #f9a600;
+    transform: scale(1.05);
+}
+
+/* Footer styles */
 .footer {
     background-color: #333;
     color: white;
-    padding: 40px 0;
-    margin-top: 40px;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: auto;
 }
 
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
 }
 
 .footer p {
     margin: 10px 0;
-    color: #fff;
+    color: #ccc;
 }
 
 .footer a {
-    color: #e99e3d;
+    color: #fff;
     text-decoration: none;
-    transition: color 0.3s;
 }
 
 .footer a:hover {
-    color: #e7a958;
+    text-decoration: underline;
 }
 
-.countdown {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+/* Animations */
+@keyframes bottomUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.countdown-item {
-    flex: 1;
-    text-align: center;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.333%); }
+}
+
+@keyframes scrollReverse {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(33.333%); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInCenter {
+    0% {
+        opacity: 0;
+        transform: translateX(20px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes timelineItemAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.timeline-item.left.visible {
+    animation: slideInFromLeft 0.6s forwards;
+}
+
+.timeline-item.right.visible {
+    animation: slideInFromRight 0.6s forwards;
 }
 
 /* Responsive styles */
-@media screen and (max-width: 768px) {
-    /* Navbar adjustments - consistent across all pages */
+@media (max-width: 768px) {
     .navbar {
-        position: fixed;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 12px 20px;
-        background: rgba(255, 255, 255, 0.95);
-        display: flex;
-        gap: 15px;
-        border-radius: 8px;
-        width: auto;
+        flex-direction: row;
+        padding: 15px 25px;
     }
-
-    .navbar a {
-        font-size: 14px;
+    .main {
+        height: auto;
+        padding: 20px;
+        text-align: center;
+        padding-top: 110px; /* Add padding to push content below the navbar */
     }
-
-    /* Main title adjustments */
     .title {
         font-size: 5rem;
-        margin-bottom: 15px;
-        line-height: 1.1;
     }
-
     .tagline {
         font-size: 1.5rem;
-        letter-spacing: 0.1em;
-        margin: 10px 0;
     }
-
     .subtitle {
-        font-size: 2.8rem;
-        margin-top: 15px;
+        font-size: 3rem;
     }
-
-    /* Countdown adjustments */
     .countdown-section {
-        padding: 20px 10px;
-        margin-top: 20px;
-    }
-
-    .countdown-title {
-        font-size: 1.8rem;
-        margin-bottom: 20px;
-        padding: 0 15px;
-        line-height: 1.3;
-    }
-
-    .countdown {
-        gap: 12px;
-        padding: 0 10px;
-    }
-
-    .countdown-item {
-        min-width: 75px;
-        padding: 12px 8px;
-    }
-
-    .countdown-number {
-        font-size: 2rem;
-        margin-bottom: 5px;
-    }
-
-    .countdown-label {
-        font-size: 0.8rem;
-    }
-
-    /* Restore and adjust floating images for mobile */
-    .floating-images {
-        display: block;
-        overflow: hidden;
-        margin-top: 30px;
-    }
-
-    .image-row img {
-        width: 200px;
-        height: auto;
-    }
-
-    .float-left, .float-right {
-        animation-duration: 45s;
-    }
-
-    .contact-section {
         flex-direction: column;
-        padding: 100px 15px 40px 15px;
-        gap: 30px;
+        padding: 15px;
     }
-
-    .college-image {
-        width: 100%;
-        max-width: 350px;
-        margin: 0 auto;
+    .timeline-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
     }
-
-    .college-info {
+    .timeline-item {
+        display: flex;
+        justify-content: center; 
+        width: 90%; 
+        margin: 10px 0; 
+        padding: 10px; /* Add padding between each event item and its container */
+    }
+    .floating-images {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 100%;
-        padding: 0 15px;
+    }
+    .image-row {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .float-left, .float-right {
+        width: 45%; /* Adjust width to allow two images side by side */
+        margin: 5px;
+    }
+    .navbar {
+        padding: 10px 15px;
+    }
+    .title {
+        font-size: 5rem;
+    }
+    .countdown {
+        flex-direction: column;
+    }
+    .countdown-item {
+        margin-bottom: 20px;
+    }
+    .timeline-item.left,
+    .timeline-item.right {
+        margin: 0;
         text-align: center;
     }
-
-    .college-info h2 {
-        font-size: 1.8rem;
-        line-height: 1.3;
-        margin: 15px 0;
-    }
-
-    .justified-text {
-        font-size: 16px !important;
-        line-height: 1.6;
-        margin: 15px 0;
-        text-align: justify;
-    }
-
-    .website-button, .events-button {
-        width: 80%;
-        max-width: 200px;
-        margin: 20px auto;
-        padding: 12px 20px;
-        display: block;
-    }
-
-    .main {
-        padding-top: 300px; /* Increased padding significantly for better fit below navbar */
-    }
-}
-
-/* Small phone adjustments */
-@media screen and (max-width: 360px) {
-    .title {
-        font-size: 4.2rem;
-    }
-
-    .tagline {
-        font-size: 1.3rem;
-    }
-
-    .subtitle {
-        font-size: 2.3rem;
-    }
-
-    .countdown-title {
-        font-size: 1.5rem;
-    }
-
-    .countdown-item {
-        min-width: 70px;
-        padding: 10px 5px;
-    }
-
-    .image-row img {
-        width: 150px;
-    }
-}
-
-/* Tablet adjustments */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-    .title {
-        font-size: 7rem;
-    }
-
-    .tagline {
-        font-size: 2rem;
-    }
-
-    .subtitle {
-        font-size: 3.5rem;
-    }
-
-    .countdown-title {
-        font-size: 2.2rem;
-    }
-
-    .countdown-item {
-        min-width: 100px;
-    }
-
-    .image-row img {
+    .float-left,
+    .float-right {
         width: 250px;
+        height: 175px;
     }
-
-    .contact-section {
-        padding: 120px 40px 60px 40px;
-        gap: 40px;
+    .vertical-line {
+        display: none; /* Hide vertical line in mobile view */
     }
-
-    .college-info h2 {
-        font-size: 2rem;
-    }
-}
-
-/* Desktop adjustments */
-@media (min-width: 769px) {
-    .contact-section {
-        align-items: center; /* Align items in the center for desktop view */
-    }
-
-    .college-image {
-        margin-top: 0; /* Remove any top margin to align with title */
-    }
-
-    .college-info {
-        margin-top: 0; /* Remove any top margin to align with image */
+    .dot {
+        display: none; /* Hide dot in mobile view */
     }
 }

@@ -8,6 +8,34 @@
     <meta name="description" content="">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('images/college-pic2.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3); /* Reduced opacity for the overlay */
+            z-index: -1;
+        }
+        @media (max-width: 768px) {
+            .contact-section {
+                flex-direction: column; /* Stack elements vertically for mobile view */
+            }
+            .college-image {
+                order: 1; /* Move college image to the top */
+            }
+            .college-info {
+                order: 2; /* Keep college info below the image */
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="navbar">
@@ -19,14 +47,14 @@
 
     <div class="contact-section">
         <div class="college-image">
-            <img src="images/Firefly.png" alt="AITM College">
+            <img src="images/college-pic1.jpg" alt="AITM College">
         </div>
         <div class="college-info">
-            <h2>Angadi Institute Of Technology & Management</h2>
-            <p style="font-size: 12px;">(APPROVED BY AICTE, New Delhi
+            <h2 class="centred-text" style="color: #fbbe4e;">Angadi Institute Of Technology & Management</h2>
+            <p class="centred-text" style="font-size: 12px; color: #ffffff;">(APPROVED BY AICTE, New Delhi
                 AFFILIATED TO Visvesvaraya Technology University, Belagavi<br>
                 ACCREDITED BY NBA & NAAC)</p>
-            <p class="justified-text" style="font-size: 18px;">AITM stands as a symbol of educational excellence, inspiring students to reach new heights, encouraging them to embrace the endless possibilities that engineering has to offer and providing a holistic learning environment that nurtures student's overall development.</p>
+            <p class="justified-text" style="font-size: 18px; color: #ffffff;">AITM stands as a symbol of educational excellence, inspiring students to reach new heights, encouraging them to embrace the endless possibilities that engineering has to offer and providing a holistic learning environment that nurtures student's overall development.</p>
             <a href="https://aitmbgm.ac.in/" class="website-button" target="_blank">Visit Website</a>
         </div>
     </div>
@@ -37,7 +65,7 @@
         <div class="footer-content">
             <p>&copy; 2025 VENCER. All rights reserved.</p>
             <p>Angadi Institute Of Technology & Management, Belagavi</p>
-            <p>Contact: <a href="mailto:contact@vencer.com">contact@vencer.com</a></p>
+            <p>Contact: <a href="mailto:vencer.aitm@gmail.com">vencer.aitm@gmail.com</a></p>
         </div>
     </footer>
 </body>
